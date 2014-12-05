@@ -6,6 +6,9 @@ $locale = get_locale();
 $locale_file = TEMPLATEPATH . "/languages/$locale.php";
 if ( is_readable( $locale_file ) ) require_once( $locale_file );
 
+// Global Varibles
+define("IMAGE_URL", get_bloginfo("template_url") ."/images/");
+
 // Clean up the WordPress Head
 if( !function_exists( "wp_bootstrap_head_cleanup" ) ) {  
   function wp_bootstrap_head_cleanup() {
