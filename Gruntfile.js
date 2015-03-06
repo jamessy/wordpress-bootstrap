@@ -8,7 +8,9 @@ module.exports = function(grunt) {
       },
       all: [
         'library/js/scripts.js',
-        'bower_components/bootstrap/js/*.js'
+        'bower_components/bootstrap/js/*.js',
+        'library/js/angular.min.js',
+        'library/js/angular-app.js'
       ]
     },
     less: {
@@ -24,7 +26,7 @@ module.exports = function(grunt) {
           // To enable, set sourceMap to true and update sourceMapRootpath based on your install
           sourceMap: true,
           sourceMapFilename: 'library/dist/css/styles.css.map',
-          sourceMapRootpath: '/wp-content/themes/wordpress-bootstrap/' // If you name your theme something different you may need to change this
+          sourceMapRootpath: '/wp-content/themes/nase/' // If you name your theme something different you may need to change this
         }
       }
     },
@@ -32,7 +34,9 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'library/dist/js/scripts.min.js': [
-            'library/js/*.js'
+            //'library/js/*.js',
+            'library/js/angular.min.js',
+            'library/js/angular-app.js'
           ]
           // Consider adding bootstrap js files here to consolidate your browser requests
         },
@@ -128,7 +132,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('dev', [
     'grunticon',
-    'watch'
+    'watch',
+    'uglify',
+    'clean'
   ]);
 
 };
