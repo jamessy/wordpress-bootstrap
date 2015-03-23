@@ -8,9 +8,7 @@ module.exports = function(grunt) {
       },
       all: [
         'library/js/scripts.js',
-        'bower_components/bootstrap/js/*.js',
-        'library/js/angular.min.js',
-        'library/js/angular-app.js'
+        'bower_components/bootstrap/js/*.js'
       ]
     },
     less: {
@@ -26,7 +24,7 @@ module.exports = function(grunt) {
           // To enable, set sourceMap to true and update sourceMapRootpath based on your install
           sourceMap: true,
           sourceMapFilename: 'library/dist/css/styles.css.map',
-          sourceMapRootpath: '/wp-content/themes/nase/' // If you name your theme something different you may need to change this
+          sourceMapRootpath: '/wp-content/themes/wordpress-bootstrap/' // If you name your theme something different you may need to change this
         }
       }
     },
@@ -34,9 +32,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'library/dist/js/scripts.min.js': [
-            //'library/js/*.js',
-            'library/js/angular.min.js',
-            'library/js/angular-app.js'
+            'library/js/*.js'
           ]
           // Consider adding bootstrap js files here to consolidate your browser requests
         },
@@ -57,13 +53,6 @@ module.exports = function(grunt) {
           }],
           options: {
           }
-      }
-    },
-    version: {
-      assets: {
-        files: {
-          'functions.php': ['library/dist/css/styles.css', 'library/dist/js/scripts.min.js']
-        }
       }
     },
     watch: {
@@ -109,7 +98,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-wp-assets');
   grunt.loadNpmTasks('grunt-grunticon');
   grunt.loadNpmTasks('grunt-svgstore');
 
@@ -119,7 +107,6 @@ module.exports = function(grunt) {
     'less',
     'uglify',
     'grunticon',
-    'version'
   ]);
 
   grunt.registerTask('build', [
@@ -127,14 +114,11 @@ module.exports = function(grunt) {
     'less',
     'uglify',
     'grunticon',
-    'version'
   ]);
 
   grunt.registerTask('dev', [
     'grunticon',
-    'watch',
-    'uglify',
-    'clean'
+    'watch'
   ]);
 
 };
